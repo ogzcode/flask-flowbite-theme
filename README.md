@@ -6,4 +6,5 @@ React öğrenirken geliştirdiğim mini projelerin Codepen Linkleri
 Clock : <a href="https://codepen.io/ogzCode/pen/MWVBjEG">CodePen</a><br>
 Toggle Button for change background: <a href="https://codepen.io/ogzCode/pen/jOzpMZY">CodePen</a><br>
 Counter : <a href="https://codepen.io/ogzCode/pen/GRxBGVG">CodePen</a><br>
-Login Form with Conditional Rendering : <a href="https://codepen.io/ogzCode/pen/gOedROz">CodePen</a>
+Login Form with Conditional Rendering : <a href="https://codepen.io/ogzCode/pen/gOedROz">CodePen</a><br>
+Synchronized Text: <a href="https://codepen.io/ogzCode/pen/vYRQjoM">CodePen</a>
