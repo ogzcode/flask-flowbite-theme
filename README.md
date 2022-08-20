@@ -7,4 +7,6 @@ Clock : <a href="https://codepen.io/ogzCode/pen/MWVBjEG">CodePen</a><br>
 Toggle Button for change background: <a href="https://codepen.io/ogzCode/pen/jOzpMZY">CodePen</a><br>
 Counter : <a href="https://codepen.io/ogzCode/pen/GRxBGVG">CodePen</a><br>
 Login Form with Conditional Rendering : <a href="https://codepen.io/ogzCode/pen/gOedROz">CodePen</a><br>
-Synchronized Text: <a href="https://codepen.io/ogzCode/pen/vYRQjoM">CodePen</a>
+Synchronized Text: <a href="https://codepen.io/ogzCode/pen/vYRQjoM">CodePen</a><br>
+Select Menu : <a href="https://codepen.io/ogzCode/pen/bGvzOpj">
+CodePen</a>
