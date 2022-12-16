@@ -1,5 +1,5 @@
 # React Çalışmalarım
-React öğrenirken geliştirdiğim mini projelerin Codepen Linkleri
+React öğrenirken geliştirdiğim bazı basit projeler ve Codepen Linkleri
 
 <hr>
 
