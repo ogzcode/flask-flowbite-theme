@@ -1,9 +1,17 @@
 # React Çalışmalarım
 React öğrenirken geliştirdiğim bazı basit projeler ve Codepen Linkleri
 
-<hr>
+## 1.Clock
+Dijital saat uygulaması.
+Öğrendiklerim:
+* Bileşen tanımlama
+* State kullanımı
+* State güncelleme
+* Bileşen yaşam döngüsü methodları
+Codepen Link: <a href="https://codepen.io/ogzCode/pen/MWVBjEG">CodePen</a>
 
-Clock : <a href="https://codepen.io/ogzCode/pen/MWVBjEG">CodePen</a><br>
+![resim](https://user-images.githubusercontent.com/58819819/208037003-bd8d0708-183a-4170-a6f4-43302049b36c.png)
+
 Toggle Button for change background: <a href="https://codepen.io/ogzCode/pen/jOzpMZY">CodePen</a><br>
 Counter : <a href="https://codepen.io/ogzCode/pen/GRxBGVG">CodePen</a><br>
 Login Form with Conditional Rendering : <a href="https://codepen.io/ogzCode/pen/gOedROz">CodePen</a><br>
