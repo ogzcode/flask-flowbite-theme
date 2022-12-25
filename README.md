@@ -82,7 +82,27 @@ Codepen Link: <a href="https://codepen.io/ogzCode/pen/ZEoYeEY">CodePen</a>
 
 ![resim](https://user-images.githubusercontent.com/58819819/209471775-3ec0fd1b-140b-4718-91ef-c085c3bf1da6.png)
 
-Number Guessing Game : <a href="https://codepen.io/ogzCode/pen/MWGjwgq">CodePen</a><br>
-Calculator: <a href="https://codepen.io/ogzCode/pen/eYrVwLJ">CodePen</a><br>
-Quiz App: <a href="https://codepen.io/ogzCode/pen/XWqYdxY">CodePen</a><br>
-Color Memory Game : <a href="https://codepen.io/ogzCode/pen/oNdawXy">CodePen</a>
+## 10.Number Guessing Game
+Sayı tahmin oynu klonu.<br>
+Codepen Link: <a href="https://codepen.io/ogzCode/pen/MWGjwgq">CodePen</a>
+
+![resim](https://user-images.githubusercontent.com/58819819/209471859-851db8f8-5ae8-4794-bab5-617bd9ec140d.png)
+
+## 11.Calculator App
+Hesap makinesi ön yüz tasarımı.<br>
+Codepen Link : <a href="https://codepen.io/ogzCode/pen/eYrVwLJ">CodePen</a> 
+
+![resim](https://user-images.githubusercontent.com/58819819/209471920-a7b61c0a-98e0-4abb-8117-242b9bfbc9bc.png)
+
+## 12.Quiz App
+Soru-Cevap uygulaması.<br>
+Codepen Link: <a href="https://codepen.io/ogzCode/pen/XWqYdxY">CodePen</a> 
+
+![resim](https://user-images.githubusercontent.com/58819819/209471989-29ff77c4-df48-4ad4-92d5-d7ce6737aaf6.png)
+
+## 13.Color Memory Game
+Renk tabanlı hafıza oyunu.<br>
+Codepen Link: <a href="https://codepen.io/ogzCode/pen/oNdawXy">CodePen</a>
+
+![resim](https://user-images.githubusercontent.com/58819819/209472005-03e41899-735d-4666-bad9-856a95255c55.png)
+
