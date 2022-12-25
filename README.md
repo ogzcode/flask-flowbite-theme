@@ -42,7 +42,16 @@ Codepen Link : <a href="https://codepen.io/ogzCode/pen/gOedROz">CodePen</a>
 
 ![resim](https://user-images.githubusercontent.com/58819819/209427272-38b6f98d-951b-4874-b1f0-af9eb643d298.png)
 
-Synchronized Text: <a href="https://codepen.io/ogzCode/pen/vYRQjoM">CodePen</a><br>
+## 5.Synchronized Text
+Input ile senkron şekilde değişen yazı örneği.<br>
+Öğrendiklerim:
+* Girdilerin state ve metodlar ile kullanımı
+<br>
+
+Codepen Link: <a href="https://codepen.io/ogzCode/pen/vYRQjoM">CodePen</a>
+
+![resim](https://user-images.githubusercontent.com/58819819/209470974-022101b0-1827-4b58-a9b5-3d7b4b6ea66a.png)
+
 Select Menu : <a href="https://codepen.io/ogzCode/pen/bGvzOpj">CodePen</a><br>
 Temperature Converter : <a href="https://codepen.io/ogzCode/pen/mdxYZPQ">CodePen</a><br>
 Tic Tac Toe Game : <a href="https://codepen.io/ogzCode/pen/JjvjpqP">CodePen</a><br>
