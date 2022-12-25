@@ -52,9 +52,29 @@ Codepen Link: <a href="https://codepen.io/ogzCode/pen/vYRQjoM">CodePen</a>
 
 ![resim](https://user-images.githubusercontent.com/58819819/209470974-022101b0-1827-4b58-a9b5-3d7b4b6ea66a.png)
 
-Select Menu : <a href="https://codepen.io/ogzCode/pen/bGvzOpj">CodePen</a><br>
-Temperature Converter : <a href="https://codepen.io/ogzCode/pen/mdxYZPQ">CodePen</a><br>
-Tic Tac Toe Game : <a href="https://codepen.io/ogzCode/pen/JjvjpqP">CodePen</a><br>
+## 6.Select Menu
+Açılır menü örneği.
+Öğrendiklerim:
+* Listeler ile çoklu bileşen render lama.
+<br>
+
+Codepen Link:<a href="https://codepen.io/ogzCode/pen/bGvzOpj">CodePen</a>
+![resim](https://user-images.githubusercontent.com/58819819/209471596-46b201c3-0f54-4030-9450-1c2d6ecaf044.png)
+
+## 7.Temperature Converter
+Sıcaklık dönüştürücü.<br>
+
+Codepen Link: <a href="https://codepen.io/ogzCode/pen/mdxYZPQ">CodePen</a>
+
+![resim](https://user-images.githubusercontent.com/58819819/209471655-81bcd5f1-0e15-4584-8cfa-9c6feb92c485.png)
+
+## 8.Tic-Tac-Toe
+Tic tac toe oynu klonu
+
+Codepen Link: <a href="https://codepen.io/ogzCode/pen/JjvjpqP">CodePen</a>
+
+![resim](https://user-images.githubusercontent.com/58819819/209471720-b01734e4-8506-452a-9e7d-7b2f091972cb.png)
+
 Todo App : <a href="https://codepen.io/ogzCode/pen/ZEoYeEY">CodePen</a><br>
 Number Guessing Game : <a href="https://codepen.io/ogzCode/pen/MWGjwgq">CodePen</a><br>
 Calculator: <a href="https://codepen.io/ogzCode/pen/eYrVwLJ">CodePen</a><br>
