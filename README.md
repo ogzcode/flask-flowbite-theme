@@ -69,13 +69,19 @@ Codepen Link: <a href="https://codepen.io/ogzCode/pen/mdxYZPQ">CodePen</a>
 ![resim](https://user-images.githubusercontent.com/58819819/209471655-81bcd5f1-0e15-4584-8cfa-9c6feb92c485.png)
 
 ## 8.Tic-Tac-Toe
-Tic tac toe oynu klonu
+Tic tac toe oynu klonu.<br>
 
 Codepen Link: <a href="https://codepen.io/ogzCode/pen/JjvjpqP">CodePen</a>
 
 ![resim](https://user-images.githubusercontent.com/58819819/209471720-b01734e4-8506-452a-9e7d-7b2f091972cb.png)
 
-Todo App : <a href="https://codepen.io/ogzCode/pen/ZEoYeEY">CodePen</a><br>
+## 9.Todo App
+Not kayıt uygulaması.<br>
+
+Codepen Link: <a href="https://codepen.io/ogzCode/pen/ZEoYeEY">CodePen</a>
+
+![resim](https://user-images.githubusercontent.com/58819819/209471775-3ec0fd1b-140b-4718-91ef-c085c3bf1da6.png)
+
 Number Guessing Game : <a href="https://codepen.io/ogzCode/pen/MWGjwgq">CodePen</a><br>
 Calculator: <a href="https://codepen.io/ogzCode/pen/eYrVwLJ">CodePen</a><br>
 Quiz App: <a href="https://codepen.io/ogzCode/pen/XWqYdxY">CodePen</a><br>
