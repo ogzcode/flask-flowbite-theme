@@ -106,3 +106,10 @@ Codepen Link: <a href="https://codepen.io/ogzCode/pen/oNdawXy">CodePen</a>
 
 ![resim](https://user-images.githubusercontent.com/58819819/209472005-03e41899-735d-4666-bad9-856a95255c55.png)
 
+## 14.Star Rating App
+React ile geliştirdiğim dinamik oy kullanma uygulaması.<br> 
+Codepen Link : <a href="https://codepen.io/ogzCode/pen/xxJqxeK?editors=0010">Codepen</a>
+
+![resim](https://user-images.githubusercontent.com/58819819/211763359-b16493f4-51b7-4afa-bb6e-6945f55e9281.png)
+
+
