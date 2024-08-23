@@ -18,6 +18,12 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login' 
 
+from app.models import User
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User(user_id)
+
 from app.routes import auth_routes
 
 app.register_blueprint(auth_routes)
