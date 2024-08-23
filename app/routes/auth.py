@@ -1,7 +1,37 @@
-from flask import Blueprint, request, jsonify, render_template, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, jsonify
+from flask_login import login_user, logout_user, login_required
 
-auth_routes = Blueprint('auth_routes', __name__)
+from app.services import UserServices
+
+auth_routes = Blueprint('auth_routes', __name__, template_folder='templates')
+
 
 @auth_routes.route('/login', methods=['GET'])
 def login():
-    return render_template('login.html')
+    return render_template('pages/login.html')
+
+
+@auth_routes.route('/login', methods=['POST'])
+def login_post():
+    req_data = request.form.to_dict()
+
+    user = UserServices.get_user_by_email(req_data['email'])
+
+    if user is None or not user.check_password(req_data['password']):
+        return jsonify({"error": "Invalid email or password"}), 401
+
+    login_user(user)
+
+    return redirect(url_for('home'))
+
+
+@auth_routes.route('/register', methods=['GET'])
+def register():
+    return render_template('pages/register.html')
+
+
+@auth_routes.route('/logout', methods=['GET'])
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('auth_routes.login'))
