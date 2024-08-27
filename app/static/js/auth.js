@@ -1,11 +1,24 @@
 const authRequest = async (url, data) => {
-    return await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    });
+    try {
+        const res = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (!res.ok) {
+            const response = await res.json();
+            throw new Error(response.error);
+        }
+
+        return await res.json();
+    }
+    catch (error) {
+        throw new Error(error.message);
+    }
+
 }
 
 
@@ -24,9 +37,13 @@ document.addEventListener('alpine:init', () => {
             authRequest('/login', {
                 email: this.email,
                 password: this.password,
-            }).then((response) => {
-                console.log(response);
             })
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch((error) => {
+                    showToast(error.message, 'error');
+                })
                 .finally(() => {
                     this.loading = false;
                 });
@@ -37,9 +54,13 @@ document.addEventListener('alpine:init', () => {
                 email: this.email,
                 password: this.password,
                 username: this.username,
-            }).then((response) => {
-                console.log(response);
             })
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch((error) => {
+                    showToast(error.message, 'error');
+                })
                 .finally(() => {
                     this.loading = false;
                 });

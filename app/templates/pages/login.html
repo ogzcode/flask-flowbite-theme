@@ -5,7 +5,7 @@
     <img src="{{ url_for('static', filename='images/bg-auth.jpg') }}" alt="bg"
         class="absolute top-0 left-0 h-full z-0 object-cover w-full" />
     <form x-data="auth" @submit.prevent="login"
-        class="ml-16 w-[32rem] p-8 backdrop-blur-md border border-gray-500  z-10 bg-white/30 rounded-xl">
+        class="w-[32rem] p-8 backdrop-blur-md border border-gray-500  z-10 bg-white/30 rounded-xl">
         <div class="mb-8">
             <h1 class="text-2xl font-bold text-gray-800 dark:text-white text-center">Login</h1>
             <p class="text-sm text-gray-600 dark:text-gray-300 text-center mt-2">Need an account?
@@ -45,7 +45,8 @@
             <input :type="passwordVisible ? 'text' : 'password'" id="password" x-model="password"
                 class="bg-gray-50 border border-gray-600 text-gray-800 text-sm rounded focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5"
                 required />
-            <button type="button" @click="passwordVisible = !passwordVisible" class="absolute bottom-2.5 right-2 text-gray-600">
+            <button type="button" @click="passwordVisible = !passwordVisible"
+                class="absolute bottom-2.5 right-2 text-gray-600">
                 <svg x-show="!passwordVisible" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" class="lucide lucide-eye">
@@ -53,11 +54,9 @@
                         d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
                     <circle cx="12" cy="12" r="3" />
                 </svg>
-                <svg
-                    x-show="passwordVisible"
-                    xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-eye-off">
+                <svg x-show="passwordVisible" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="lucide lucide-eye-off">
                     <path
                         d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" />
                     <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" />
@@ -85,6 +84,7 @@
             </button>
         </div>
     </form>
+
 </div>
 {% endblock %}
 
