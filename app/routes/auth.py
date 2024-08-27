@@ -13,7 +13,7 @@ def login():
 
 @auth_routes.route('/login', methods=['POST'])
 def login_post():
-    req_data = request.form.to_dict()
+    req_data = request.get_json()
 
     user = UserServices.get_user_by_email(req_data['email'])
 
@@ -30,8 +30,30 @@ def register():
     return render_template('pages/register.html')
 
 
+@auth_routes.route('/register', methods=['POST'])
+def register_post():
+    req_data = request.get_json()
+
+    user = UserServices.get_user_by_email(req_data['email'])
+
+    if user is not None:
+        return jsonify({"error": "User already exists"}), 400
+
+    UserServices.create_user(req_data)
+
+    return redirect(url_for('auth_routes.login'))
+
+
+@auth_routes.route('/forget-password', methods=['GET'])
+def forget_password():
+    return "hello"
+
+
 @auth_routes.route('/logout', methods=['GET'])
 @login_required
 def logout():
     logout_user()
     return redirect(url_for('auth_routes.login'))
+
+
+
