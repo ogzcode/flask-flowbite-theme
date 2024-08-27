@@ -1,31 +1,93 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="">
-    <form class="max-w-sm mx-auto">
+<div class="min-h-screen flex justify-center items-center relative">
+    <img src="{{ url_for('static', filename='images/bg-auth.jpg') }}" alt="bg"
+        class="absolute top-0 left-0 h-full z-0 object-cover w-full" />
+    <form x-data="auth" @submit.prevent="login"
+        class="ml-16 w-[32rem] p-8 backdrop-blur-md border border-gray-500  z-10 bg-white/30 rounded-xl">
+        <div class="mb-8">
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-white text-center">Login</h1>
+            <p class="text-sm text-gray-600 dark:text-gray-300 text-center mt-2">Need an account?
+                <a href="{{ url_for('auth_routes.register') }}"
+                    class="text-indigo-700 font-semibold dark:text-blue-400">Register</a>
+            </p>
+            <div class="grid grid-cols-2 gap-4 my-8">
+                <div
+                    class="flex items-center gap-3 justify-center cursor-pointer p-2 rounded bg-gray-50 border-gray-500 border">
+                    <span class="text-sm text-gray-600 dark:text-gray-300 text-center">Login with Google</span>
+                    <img src="{{ url_for('static', filename='images/google.svg') }}" alt="logo" class="w-5" />
+                </div>
+                <div class="flex items-center gap-3 justify-center cursor-pointer p-2 rounded bg-gray-50 border-gray-500 border"">
+                    <span class=" text-sm text-gray-600 dark:text-gray-300 text-center">Login with Apple</span>
+                    <img src="{{ url_for('static', filename='images/apple-black.svg') }}" alt="logo" class="w-5" />
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="border-t border-gray-400 w-full">
+                </span>
+                <span class="text-xs text-gray-600 font-medium uppercase">
+                    or
+                </span>
+                <span class="border-t border-gray-400 w-full">
+                </span>
+            </div>
+        </div>
+
         <div class="mb-5">
-            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-            <input type="email" id="email"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            <label for="email" class="block mb-1 text-sm font-medium text-gray-700 dark:text-white">Email</label>
+            <input type="email" id="email" x-model="email"
+                class="bg-gray-50 border border-gray-500 text-gray-800 text-sm rounded focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5"
                 placeholder="name@flowbite.com" required />
         </div>
-        <div class="mb-5">
-            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
-                password</label>
-            <input type="password" id="password"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        <div class="mb-5 relative">
+            <label for="password" class="block mb-1 text-sm font-medium text-gray-700 dark:text-white">Password</label>
+            <input :type="passwordVisible ? 'text' : 'password'" id="password" x-model="password"
+                class="bg-gray-50 border border-gray-600 text-gray-800 text-sm rounded focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5"
                 required />
+            <button type="button" @click="passwordVisible = !passwordVisible" class="absolute bottom-2.5 right-2 text-gray-600">
+                <svg x-show="!passwordVisible" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="lucide lucide-eye">
+                    <path
+                        d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                    <circle cx="12" cy="12" r="3" />
+                </svg>
+                <svg
+                    x-show="passwordVisible"
+                    xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-eye-off">
+                    <path
+                        d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" />
+                    <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" />
+                    <path
+                        d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" />
+                    <path d="m2 2 20 20" />
+                </svg>
+            </button>
         </div>
-        <div class="flex items-start mb-5">
+        <div class="flex items-start justify-between mb-5">
             <div class="flex items-center h-5">
-                <input id="remember" type="checkbox" value=""
-                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+                <input id="remember" type="checkbox"
+                    class="w-4 h-4 border border-gray-500 rounded bg-white focus:ring-3 focus:ring-indigo-500"
                     required />
+                <label for="remember" class="ms-2 text-sm font-medium text-white dark:text-gray-300">Remember me</label>
             </div>
-            <label for="remember" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
+            <a href="{{ url_for('auth_routes.forget_password') }}"
+                class="text-sm font-medium text-white dark:text-blue-400 underline">Forgot password?</a>
+
         </div>
-        <button type="submit"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+        <div class="flex justify-center">
+            <button type="submit"
+                class="text-white mx-auto bg-indigo-700 hover:bg-indigo-800 font-medium rounded-lg text-sm w-full sm:w-2/3 px-6 py-2 text-center ">
+                Submit
+            </button>
+        </div>
     </form>
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
 {% endblock %}
