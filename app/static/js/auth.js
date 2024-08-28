@@ -46,6 +46,9 @@ document.addEventListener('alpine:init', () => {
                 })
                 .finally(() => {
                     this.loading = false;
+                    this.password = '';
+                    this.email = '';
+                    this.passwordVisible = false;
                 });
         },
         register() {
@@ -56,13 +59,20 @@ document.addEventListener('alpine:init', () => {
                 username: this.username,
             })
                 .then((response) => {
-                    console.log(response);
+                    showToast(response.message, 'success');
+                    setTimeout(() => {
+                        window.location.href = '/login';
+                    }, 2000);
                 })
                 .catch((error) => {
                     showToast(error.message, 'error');
                 })
                 .finally(() => {
                     this.loading = false;
+                    this.password = '';
+                    this.email = '';
+                    this.username = '';
+                    this.passwordVisible = false;
                 });
         }
     }));

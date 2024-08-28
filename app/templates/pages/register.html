@@ -4,22 +4,22 @@
 <div class="min-h-screen flex justify-center items-center relative">
     <img src="{{ url_for('static', filename='images/bg-auth.jpg') }}" alt="bg"
         class="absolute top-0 left-0 h-full z-0 object-cover w-full" />
-    <form x-data="auth" @submit.prevent="login"
+    <form x-data="auth" @submit.prevent="register"
         class="w-[32rem] p-8 backdrop-blur-md border border-gray-500  z-10 bg-white/30 rounded-xl">
         <div class="mb-8">
-            <h1 class="text-2xl font-bold text-gray-800 dark:text-white text-center">Login</h1>
-            <p class="text-sm text-gray-600 dark:text-gray-300 text-center mt-2">Need an account?
-                <a href="{{ url_for('auth_routes.register') }}"
-                    class="text-indigo-700 font-semibold dark:text-blue-400">Register</a>
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-white text-center">Register</h1>
+            <p class="text-sm text-gray-600 dark:text-gray-300 text-center mt-2">Already have an account?
+                <a href="{{ url_for('auth_routes.login') }}"
+                    class="text-indigo-700 font-semibold dark:text-blue-400">Login</a>
             </p>
             <div class="grid grid-cols-2 gap-4 my-8">
                 <div
                     class="flex items-center gap-3 justify-center cursor-pointer p-2 rounded bg-gray-50 border-gray-500 border">
-                    <span class="text-sm text-gray-600 dark:text-gray-300 text-center">Login with Google</span>
+                    <span class="text-sm text-gray-600 dark:text-gray-300 text-center">Register with Google</span>
                     <img src="{{ url_for('static', filename='images/google.svg') }}" alt="logo" class="w-5" />
                 </div>
                 <div class="flex items-center gap-3 justify-center cursor-pointer p-2 rounded bg-gray-50 border-gray-500 border"">
-                    <span class=" text-sm text-gray-600 dark:text-gray-300 text-center">Login with Apple</span>
+                    <span class=" text-sm text-gray-600 dark:text-gray-300 text-center">Register with Apple</span>
                     <img src="{{ url_for('static', filename='images/apple-black.svg') }}" alt="logo" class="w-5" />
                 </div>
             </div>
@@ -33,7 +33,12 @@
                 </span>
             </div>
         </div>
-
+        <div class="mb-5">
+            <label for="username" class="block mb-1 text-sm font-medium text-gray-700 dark:text-white">Username</label>
+            <input type="text" id="username" x-model="username"
+                class="bg-gray-50 border border-gray-500 text-gray-800 text-sm rounded focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5"
+                placeholder="JohnDoe44" required />
+        </div>
         <div class="mb-5">
             <label for="email" class="block mb-1 text-sm font-medium text-gray-700 dark:text-white">Email</label>
             <input type="email" id="email" x-model="email"
@@ -66,22 +71,11 @@
                 </svg>
             </button>
         </div>
-        <div class="flex items-start justify-between mb-5">
-            <div class="flex items-center h-5">
-                <input id="remember" type="checkbox"
-                    class="w-4 h-4 border border-gray-500 rounded bg-white focus:ring-3 focus:ring-indigo-500"
-                    required />
-                <label for="remember" class="ms-2 text-sm font-medium text-white dark:text-gray-300">Remember me</label>
-            </div>
-            <a href="{{ url_for('auth_routes.forget_password') }}"
-                class="text-sm font-medium text-white dark:text-blue-400 underline">Forgot password?</a>
-
-        </div>
         <div class="flex justify-center">
             <button type="submit"
                 class="text-white mx-auto bg-indigo-700 hover:bg-indigo-800 font-medium rounded-lg text-sm w-full sm:w-2/3 px-6 py-2 text-center ">
-                <span x-show="loading" class="spinner mr-2"></span>
-                Login
+                <span x-show="loading" class="spinner mr-3"></span>
+                Register
             </button>
         </div>
     </form>
