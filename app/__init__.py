@@ -16,17 +16,18 @@ migrate = Migrate(app, db)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'login' 
+login_manager.login_view = 'auth_routes.login' 
 
 from app.models import User
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User(user_id)
+    return User.query.get(int(user_id))
 
-from app.routes import auth_routes
+from app.routes import auth_routes, dashboard_routes
 
 app.register_blueprint(auth_routes)
+app.register_blueprint(dashboard_routes)
 
 @app.route("/")
 def index():
