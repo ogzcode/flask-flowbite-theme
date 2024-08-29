@@ -1,0 +1,48 @@
+<div class="bg-white p-4 rounded border border-gray-300 m-6" x-data="dashboard">
+    <div class="flex justify-between items-center">
+        <h1 class="text-gray-800 text-xl font-semibold">Last Sales</h1>
+        <button
+            @click="exportData()"
+            class="border-dashed border border-indigo-500 text-indigo-500 font-semibold rounded py-1 px-4 hover:bg-indigo-50">Export</button>
+    </div>
+    <table class="w-full my-4 border-collapse border border-gray-300">
+        <thead>
+            <tr class="bg-gray-50">
+                <th class="text-left p-3 border border-gray-300 text-base font-semibold text-gray-700">Name</th>
+                <th class="text-left p-3 border border-gray-300 text-base font-semibold text-gray-700">Email</th>
+                <th class="text-left p-3 border border-gray-300 text-base font-semibold text-gray-700">Phone</th>
+                <th class="text-left p-3 border border-gray-300 text-base font-semibold text-gray-700">Product</th>
+                <th class="text-left p-3 border border-gray-300 text-base font-semibold text-gray-700">Amount</th>
+                <th class="text-left p-3 border border-gray-300 text-base font-semibold text-gray-700">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <template x-for="sale in sales" :key="sale.email">
+                <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="p-3 border border-gray-300 text-gray-600 text-sm" x-text="sale.name"></td>
+                    <td class="p-3 border border-gray-300 text-gray-600 text-sm" x-text="sale.email"></td>
+                    <td class="p-3 border border-gray-300 text-gray-600 text-sm" x-text="sale.phone"></td>
+                    <td class="p-3 border border-gray-300 text-gray-600 text-sm" x-text="sale.product"></td>
+                    <td class="p-3 border border-gray-300 text-gray-600 text-sm" x-text="sale.amount"></td>
+                    <td class="p-3 border border-gray-300 text-gray-600 text-sm" x-text="formatDate(sale.date)"></td>
+                </tr>
+            </template>
+        </tbody>
+    </table>
+
+    <div class="flex justify-between items-center">
+        <p class="text-gray-500 text-sm">
+            Showing <span class="text-gray-700 font-semibold" x-text="start"></span> to
+            <span x-text="end" class="text-gray-700 font-semibold"></span> of
+            <span x-text="total" class="text-gray-700 font-semibold"></span> entries
+        </p>
+        <div>
+            <button
+                class="text-sm border border-gray-300 text-gray-500 rounded py-1 px-4 hover:bg-gray-50 disabled:opacity-50"
+                @click="fetchSales(currentPage - 1)" :disabled="currentPage === 1">Previous</button>
+            <button
+                class="text-sm border border-gray-300 text-gray-500 rounded py-1 px-4 hover:bg-gray-50 disabled:opacity-50"
+                @click="fetchSales(currentPage + 1)" :disabled="sales.length < perPage">Next</button>
+        </div>
+    </div>
+</div>
