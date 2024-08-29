@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Flask Theme">
+    <meta name="author" content="ogzCode">
+    <link rel="icon" href="{{url_for('static',filename='images/logo.png')}}">
     <title>Flowbite Flask Template</title>
     <link rel="stylesheet" href="{{url_for('static',filename='css/output.css')}}">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -15,12 +18,16 @@
 <body>
 
     {% if current_user.is_authenticated %}
-        {% include 'partials/navbar.html' %}
-        {% include 'partials/sidebar.html' %}
+    {% include 'partials/navbar.html' %}
+    {% include 'partials/sidebar.html' %}
     {% endif %}
 
     {% block content %}
     {% endblock %}
+
+    {% if current_user.is_authenticated %}
+    {% include 'partials/footer.html' %}
+    {% endif %}
 
     {% include 'partials/toast.html' %}
 
