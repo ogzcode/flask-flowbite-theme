@@ -2,10 +2,13 @@
     class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
     aria-label="Sidebar">
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
-        <ul class="space-y-2 font-medium">
+        <ul class="space-y-2 font-medium text-sm">
+            <li class="text-xs uppercase text-gray-600">
+                Menu
+            </li>
             <li>
                 <a href="{{ url_for('dashboard_routes.dashboard') }}"
-                    class="flex items-center text-sm p-2 text-gray-700 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    class="flex items-center gap-3 p-2 text-gray-700 rounded-lg dark:text-white hover:bg-stone-100 dark:hover:bg-gray-700">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="lucide lucide-layout-dashboard">
@@ -14,8 +17,114 @@
                         <rect width="7" height="9" x="14" y="12" rx="1" />
                         <rect width="7" height="5" x="3" y="16" rx="1" />
                     </svg>
-                    <span class="ms-3">Dashboard</span>
+                    <span>Dashboard</span>
                 </a>
+            </li>
+            <li class="text-xs uppercase text-gray-600 mt-4">
+                Apps
+            </li>
+            <li x-data="{ open: false }" class="relative">
+                <button @click="open = !open"
+                    class="flex items-center gap-3 w-full p-2 text-gray-700 bg-white rounded-lg hover:bg-stone-100 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-shopping-bag">
+                        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                        <path d="M3 6h18" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
+                    </svg>
+                    <div class="flex items-center justify-between w-full text-left dark:text-white">
+                        E-Commerce
+                        <svg :class="{ 'rotate-180': open }" class="w-4 h-4 transition-transform duration-200 transform"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                </button>
+                <ul x-show="open" x-transition class="mt-2 space-y-2 pl-4">
+                    <li x-data="{ subMenuProduct: false }">
+                        <button @click="subMenuProduct = !subMenuProduct"
+                            class="flex items-center gap-3 w-full p-2 text-gray-700 bg-white rounded-lg hover:bg-stone-100 focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-scan-barcode">
+                                <path d="M3 7V5a2 2 0 0 1 2-2h2" />
+                                <path d="M17 3h2a2 2 0 0 1 2 2v2" />
+                                <path d="M21 17v2a2 2 0 0 1-2 2h-2" />
+                                <path d="M7 21H5a2 2 0 0 1-2-2v-2" />
+                                <path d="M8 7v10" />
+                                <path d="M12 7v10" />
+                                <path d="M17 7v10" />
+                            </svg>
+                            </svg>
+                            <div class="flex items-center justify-between w-full text-left dark:text-white">
+                                Product
+                                <svg :class="{ 'rotate-180': subMenuProduct }"
+                                    class="w-4 h-4 transition-transform duration-200 transform"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                        </button>
+
+                        <ul x-show="subMenuProduct" x-transition class="mt-2 space-y-2 pl-4">
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 text-gray-600 bg-white rounded-md hover:bg-stone-100 relative">
+                                    <span class="w-1 h-1 absolute rounded-full bg-gray-500 top-1/2 -translate-y-1/2" style="left: 1px"></span>
+                                    List View    
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 text-gray-600 bg-white rounded-md hover:bg-stone-100 relative">
+                                    <span class="w-1 h-1 absolute rounded-full bg-gray-500 top-1/2 -translate-y-1/2" style="left: 1px"></span>
+                                    Grid View
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 text-gray-600 bg-white rounded-md hover:bg-stone-100 relative">
+                                    <span class="w-1 h-1 absolute rounded-full bg-gray-500 top-1/2 -translate-y-1/2" style="left: 1px"></span>
+                                    Overview   
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block px-4 py-2 text-gray-600 bg-white rounded-md hover:bg-stone-100 relative">
+                                    <span class="w-1 h-1 absolute rounded-full bg-gray-500 top-1/2 -translate-y-1/2" style="left: 1px"></span>
+                                    Add New
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-2 text-gray-600 bg-white rounded-md hover:bg-stone-100 relative">
+                            <span class="w-1 h-1 absolute rounded-full bg-gray-500 top-1/2 -translate-y-1/2" style="left: 1px"></span>
+                            Shopping Cart
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-2 text-gray-600 bg-white rounded-md hover:bg-stone-100 relative">
+                            <span class="w-1 h-1 absolute rounded-full bg-gray-500 top-1/2 -translate-y-1/2" style="left: 1px"></span>
+                            Checkout
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-2 text-gray-600 bg-white rounded-md hover:bg-stone-100 relative">
+                            <span class="w-1 h-1 absolute rounded-full bg-gray-500 top-1/2 -translate-y-1/2" style="left: 1px"></span>
+                            Orders
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-2 text-gray-600 bg-white rounded-md hover:bg-stone-100 relative">
+                            <span class="w-1 h-1 absolute rounded-full bg-gray-500 top-1/2 -translate-y-1/2" style="left: 1px"></span>
+                            Order overview
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
