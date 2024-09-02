@@ -18,16 +18,26 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'auth_routes.login' 
 
+
 from app.models import User
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-from app.routes import auth_routes, dashboard_routes
+from app.routes import auth_routes, dashboard_routes, e_commerce_routes
 
 app.register_blueprint(auth_routes)
 app.register_blueprint(dashboard_routes)
+app.register_blueprint(e_commerce_routes)
+
+
+
+from app.cli import seed_products, clear_products
+
+app.cli.add_command(seed_products)
+app.cli.add_command(clear_products)
+
 
 @app.route("/")
 def index():
