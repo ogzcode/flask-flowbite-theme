@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="pt-16 lg:ml-64 overflow-y-auto bg-stone-50 min-h-screen" x-data="productList">
+  <div class="bg-white border boder-gray-300 rounded-lg m-6 p-4">
+    <h1 class="text-xl font-semibold text-gray-800">Product List</h1>
+    <div class="flex justify-between items-center mt-8">
+      <input type="text"
+        class="border border-gray-300 rounded py-1.5 px-4 w-64 focus:border-indigo-500 focus:ring-indigo-500"
+        placeholder="Search product..." x-model="search">
+      <button class="bg-indigo-500 text-white rounded py-1.5 px-4 flex gap-2 items-center hover:bg-indigo-600"
+        @click="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-plus">
+          <path d="M5 12h14" />
+          <path d="M12 5v14" />
+        </svg>
+        Add Product
+      </button>
+    </div>
+    <table class="w-full my-4 border-collapse border border-gray-300">
+      <thead>
+        <tr class="bg-gray-50">
+          <th class="text-left p-3 border border-gray-300 text-base font-semibold text-gray-700">Name</th>
+          <th class="text-left p-3 border border-gray-300 text-base font-semibold text-gray-700">Description</th>
+          <th class="text-left p-3 border border-gray-300 text-base font-semibold text-gray-700">Price</th>
+          <th class="text-left p-3 border border-gray-300 text-base font-semibold text-gray-700">Stock</th>
+          <th class="text-left p-3 border border-gray-300 text-base font-semibold text-gray-700">Category</th>
+          <th class="text-left p-3 border border-gray-300 text-base font-semibold text-gray-700">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <template x-for="product in products" :key="product.id">
+          <tr class="hover:bg-gray-50 transition-colors">
+            <td class="p-3 border border-gray-300 text-gray-600 text-sm" x-text="product.name"></td>
+            <td class="p-3 border border-gray-300 text-gray-600 text-sm" x-text="product.description"></td>
+            <td class="p-3 border border-gray-300 text-gray-600 text-sm" x-text="product.price"></td>
+            <td class="p-3 border border-gray-300 text-gray-600 text-sm" x-text="product.stock"></td>
+            <td class="p-3 border border-gray-300 text-gray-600 text-sm" x-text="product.category"></td>
+            <td class="p-3 border border-gray-300 text-gray-600 text-sm text-center">
+              <button class="bg-indigo-500 text-white rounded p-1 hover:bg-indigo-600 relative" @click="" x-tooltip="Update">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-refresh-ccw">
+                  <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                  <path d="M3 3v5h5" />
+                  <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
+                  <path d="M16 16h5v5" />
+                </svg>
+              </button>
+              <button class="bg-red-500 text-white rounded p-1 hover:bg-red-600 ml-2 relative" x-tooltip="Delete" @click="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-trash-2">
+                  <path d="M3 6h18" />
+                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                  <line x1="10" x2="10" y1="11" y2="17" />
+                  <line x1="14" x2="14" y1="11" y2="17" />
+                </svg>
+              </button>
+            </td>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/productList.js') }}"></script>
+{% endblock %}
