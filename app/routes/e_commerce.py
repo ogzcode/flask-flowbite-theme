@@ -5,6 +5,7 @@ from app.models import Product
 
 e_commerce_routes = Blueprint('e_commerce_routes', __name__)
 
+
 @e_commerce_routes.route('/e-commerce/product-list', methods=['GET'])
 @login_required
 def product_list():
@@ -26,14 +27,15 @@ def product_list_data():
 
     if search:
         products = products.filter(Product.name.ilike(f"%{search}%"))
-    
+
     if sort_order == "asc":
         products = products.order_by(getattr(Product, sort_by).asc())
 
     if sort_order == "desc":
         products = products.order_by(getattr(Product, sort_by).desc())
 
-    products = products = products.offset((page - 1) * PER_PAGE).limit(PER_PAGE).all()
+    products = products = products.offset(
+        (page - 1) * PER_PAGE).limit(PER_PAGE).all()
 
     data = []
 
@@ -60,4 +62,31 @@ def product_list_data():
             {"text": "Stock", "value": "stock"},
             {"text": "Category", "value": "category"},
         ]
+    })
+
+
+@e_commerce_routes.route('/e-commerce/sellers', methods=['GET'])
+@login_required
+def sellers():
+    return render_template('pages/e-commerce/sellers.html')
+
+
+@e_commerce_routes.route('/e-commerce/sellers/data', methods=['GET'])
+@login_required
+def sellers_data():
+    fake = Faker()
+    data = []
+
+    for _ in range(8):
+        data.append({
+            'id': fake.uuid4(),
+            'name': fake.company(),
+            'email': fake.email(),
+            'sales': fake.random_int(min=1000, max=100000),
+            'products': fake.random_int(min=10, max=100),
+            'revenue': fake.random_int(min=1000, max=100000),
+        })
+
+    return jsonify({
+        'data': data
     })
