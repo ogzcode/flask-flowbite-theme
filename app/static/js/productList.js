@@ -1,5 +1,6 @@
 document.addEventListener("alpine:init", () => {
     Alpine.data('productList', () => ({
+        perPage: 10,
         products: [],
         total: 0,
         currentPage: 1,
@@ -8,11 +9,12 @@ document.addEventListener("alpine:init", () => {
         search: '',
         sortBy: 'id',
         sortOrder: 'asc',
+        headers: [],
 
         init() {
-            this.fetchSales();
+            this.fetchProduct();
         },
-        fetchSales(page = 1) {
+        fetchProduct(page = 1) {
             if (page < 1) return;
             
             fetch(`/e-commerce/product-list/data?page=${page}&search=${this.search}&sort_by=${this.sortBy}&sort_order=${this.sortOrder}`)
@@ -24,10 +26,27 @@ document.addEventListener("alpine:init", () => {
                     this.currentPage = page;
                     this.start = data.from;
                     this.end = data.to;
-
+                    this.headers = data.headers;
                 });
         },
-        
+
+        toggleSort(value) {
+            if (this.sortBy === value) {
+                this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+            } else {
+                this.sortBy = value;
+                this.sortOrder = 'asc';
+            }
+            this.fetchProduct();
+        },
+
+        clearFilter() {
+            this.search = '';
+            this.sortBy = 'id';
+            this.sortOrder = 'asc';
+            this.page = 1;
+            this.fetchProduct();
+        },
         exportData() {
             showToast('Data exported successfully', 'success');
         },

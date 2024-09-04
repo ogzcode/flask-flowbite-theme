@@ -5,28 +5,76 @@
   <div class="bg-white border boder-gray-300 rounded-lg m-6 p-4">
     <h1 class="text-xl font-semibold text-gray-800">Product List</h1>
     <div class="flex justify-between items-center mt-8">
-      <input type="text"
-        class="border border-gray-300 rounded py-1.5 px-4 w-64 focus:border-indigo-500 focus:ring-indigo-500"
-        placeholder="Search product..." x-model="search">
-      <button class="bg-indigo-500 text-white rounded py-1.5 px-4 flex gap-2 items-center hover:bg-indigo-600"
-        @click="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          class="lucide lucide-plus">
-          <path d="M5 12h14" />
-          <path d="M12 5v14" />
-        </svg>
-        Add Product
-      </button>
+      <div class="flex border border-gray-300 rounded overflow-hidden">
+        <input type="text"
+          class="text-sm border-none py-1.5 px-2 w-64 focus:ring-0"
+          placeholder="Search product..." x-model="search" />
+        <button class="text-indigo-500 border-l border-gray-300 text-sm flex gap-2 items-center px-4"
+          @click="fetchProduct()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-search">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </button>
+      </div>
+      <div class="flex gap-4">
+        <button
+          class="bg-white border border-gray-300 text-gray-600 text-sm rounded py-1.5 px-4 flex gap-2 items-center hover:bg-gray-50"
+          @click="clearFilter()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-filter-x">
+            <path d="M13.013 3H2l8 9.46V19l4 2v-8.54l.9-1.055" />
+            <path d="m22 3-5 5" />
+            <path d="m17 3 5 5" />
+          </svg>
+          Clear Filter
+        </button>
+        <button class="bg-indigo-500 text-white text-sm rounded py-1.5 px-4 flex gap-2 items-center hover:bg-indigo-600"
+          @click="">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-plus">
+            <path d="M5 12h14" />
+            <path d="M12 5v14" />
+          </svg>
+          Add Product
+        </button>
+      </div>
     </div>
     <table class="w-full my-4 border-collapse border border-gray-300">
       <thead>
         <tr class="bg-gray-50">
-          <th class="text-left p-3 border border-gray-300 text-base font-semibold text-gray-700">Name</th>
-          <th class="text-left p-3 border border-gray-300 text-base font-semibold text-gray-700">Description</th>
-          <th class="text-left p-3 border border-gray-300 text-base font-semibold text-gray-700">Price</th>
-          <th class="text-left p-3 border border-gray-300 text-base font-semibold text-gray-700">Stock</th>
-          <th class="text-left p-3 border border-gray-300 text-base font-semibold text-gray-700">Category</th>
+          <template x-for="header in headers" :key="header.value">
+            <th class="text-left p-3 border border-gray-300 text-base font-semibold text-gray-700"
+              @click="toggleSort(header.value)">
+              <div class="flex items-center gap-4">
+                <span x-text="header.text"></span>
+                <span x-show="sortBy !== header.value">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-chevrons-up-down">
+                    <path d="m7 15 5 5 5-5" />
+                    <path d="m7 9 5-5 5 5" />
+                  </svg>
+                </span>
+                <span x-show="sortBy === header.value">
+                  <svg x-show="sortOrder === 'asc'" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="lucide lucide-chevron-up">
+                    <polyline points="18 15 12 9 6 15" />
+                  </svg>
+                  <svg x-show="sortOrder === 'desc'" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="lucide lucide-chevron-down">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </span>
+              </div>
+            </th>
+          </template>
           <th class="text-left p-3 border border-gray-300 text-base font-semibold text-gray-700">Action</th>
         </tr>
       </thead>
@@ -39,7 +87,8 @@
             <td class="p-3 border border-gray-300 text-gray-600 text-sm" x-text="product.stock"></td>
             <td class="p-3 border border-gray-300 text-gray-600 text-sm" x-text="product.category"></td>
             <td class="p-3 border border-gray-300 text-gray-600 text-sm text-center">
-              <button class="bg-indigo-500 text-white rounded p-1 hover:bg-indigo-600 relative" @click="" x-tooltip="Update">
+              <button class="bg-indigo-500 text-white rounded p-1 hover:bg-indigo-600 relative" @click=""
+                x-tooltip="Update">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                   class="lucide lucide-refresh-ccw">
@@ -49,7 +98,8 @@
                   <path d="M16 16h5v5" />
                 </svg>
               </button>
-              <button class="bg-red-500 text-white rounded p-1 hover:bg-red-600 ml-2 relative" x-tooltip="Delete" @click="">
+              <button class="bg-red-500 text-white rounded p-1 hover:bg-red-600 ml-2 relative" x-tooltip="Delete"
+                @click="">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                   class="lucide lucide-trash-2">
@@ -65,6 +115,21 @@
         </template>
       </tbody>
     </table>
+    <div class="flex justify-between items-center">
+      <p class="text-gray-500 text-sm">
+        Showing <span class="text-gray-700 font-semibold" x-text="start"></span> to
+        <span x-text="end" class="text-gray-700 font-semibold"></span> of
+        <span x-text="total" class="text-gray-700 font-semibold"></span> entries
+      </p>
+      <div>
+        <button
+          class="text-sm border border-gray-300 text-gray-500 rounded py-1 px-4 hover:bg-gray-50 disabled:opacity-60"
+          @click="fetchProduct(currentPage - 1)" :disabled="currentPage === 1">Previous</button>
+        <button
+          class="text-sm border border-gray-300 text-gray-500 rounded py-1 px-4 hover:bg-gray-50 disabled:opacity-60"
+          @click="fetchProduct(currentPage + 1)" :disabled="products.length < perPage">Next</button>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
