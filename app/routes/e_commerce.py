@@ -33,7 +33,7 @@ def product_list_data():
     if sort_order == "desc":
         products = products.order_by(getattr(Product, sort_by).desc())
 
-    products = products.slice(start, end)
+    products = products = products.offset((page - 1) * PER_PAGE).limit(PER_PAGE).all()
 
     data = []
 
@@ -53,4 +53,11 @@ def product_list_data():
         'page': page,
         "from": start,
         "to": end,
+        "headers": [
+            {"text": "Name", "value": "name"},
+            {"text": "Description", "value": "description"},
+            {"text": "Price", "value": "price"},
+            {"text": "Stock", "value": "stock"},
+            {"text": "Category", "value": "category"},
+        ]
     })
