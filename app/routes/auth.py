@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, jsonify
+from flask import Blueprint, render_template, request, redirect, url_for, jsonify, session
 from flask_login import login_user, logout_user, login_required, current_user
 from urllib.parse import urlsplit
 
@@ -31,7 +31,8 @@ def login_post():
     if user is None or not user.check_password(req_data['password']):
         return jsonify({"error": "Invalid email or password"}), 401
 
-    login_user(user)
+    login_user(user, remember=True)
+    session.permanent = True
 
     return redirect(url_for('dashboard_routes.dashboard'))
 

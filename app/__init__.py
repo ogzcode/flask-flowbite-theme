@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from config import Config
@@ -37,6 +37,13 @@ from app.cli import seed_products, clear_products
 
 app.cli.add_command(seed_products)
 app.cli.add_command(clear_products)
+
+
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    return redirect(url_for('auth_routes.login'))
+
 
 
 @app.route("/")
