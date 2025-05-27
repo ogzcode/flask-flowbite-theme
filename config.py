@@ -7,5 +7,5 @@ class Config:
     SQLALCHEMY_DATABASE_URI = 'sqlite:///test.db'
     PERMANENT_SESSION_LIFETIME = timedelta(minutes=5)
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_ECHO = True
-    SQLALCHEMY_RECORD_QUERIES = True
+    """ SQLALCHEMY_ECHO = True
+    SQLALCHEMY_RECORD_QUERIES = True """
