@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="pt-16 lg:ml-64 overflow-y-auto bg-stone-50 h-full">
+    <div class="grid grid-cols-2 lg:grid-cols-4 m-6 gap-8">
+        <div class="col-span-1 p-4 bg-white rounded-lg border border-gray-300">
+            <div class="flex justify-between items-start">
+                <h1 class="text-gray-700 font-semibold">Shipping Details</h1>
+                <div class="bg-pink-100 p-2 rounded ">
+                    <i data-feather="book-open" class="w-6 h-6 text-pink-500"></i>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-sm font-medium text-gray-600 mb-2">Paul Hilton</h2>
+                <p class="text-gray-400 text-sm">1235 Crossing Meadows Dr, Onalaska West Virginia, USA</p>
+            </div>
+        </div>
+        <div class="col-span-1 p-4 bg-white rounded-lg border border-gray-300">
+            <div class="flex justify-between items-start">
+                <h1 class="text-gray-700 font-semibold">Payment Details</h1>
+                <div class="bg-blue-100 p-2 rounded ">
+                    <i data-feather="dollar-sign" class="w-6 h-6 text-blue-500"></i>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-sm font-medium text-gray-600 mb-2">ID: #TSD456DF41SD5</h2>
+                <p class="text-gray-400 text-sm">Payment Method: <span class="font-medium text-gray-600">Credit Card</span></p>
+                <p class="text-gray-400 text-sm">Card Number: <span class="font-medium text-gray-600"> xxxx xxxx xxxx 1501</span></p>
+            </div>
+        </div>
+        <div class="col-span-1 p-4 bg-white rounded-lg border border-gray-300">
+            <div class="flex justify-between items-start">
+                <h1 class="text-gray-700 font-semibold">Customer Info</h1>
+                <div class="bg-teal-100 p-2 rounded ">
+                    <i data-feather="user" class="w-6 h-6 text-teal-500"></i>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-sm font-medium text-gray-600 mb-2">Paul Hilton</h2>
+                <p class="text-gray-400 text-sm">pauline@tailwick.com</p>
+                <p class="text-gray-400 text-sm">+1 234 567 890</p>
+            </div>
+        </div>
+        <div class="col-span-1 p-4 bg-white rounded-lg border border-gray-300">
+            <div class="flex justify-between items-start">
+                <h1 class="text-gray-700 font-semibold">Logistics Details</h1>
+                <div class="bg-orange-100 p-2 rounded ">
+                    <i data-feather="truck" class="w-6 h-6 text-orange-500"></i>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-sm font-medium text-blue-600 underline cursor-pointer mb-2">Express Delivery</h2>
+                <p class="text-gray-400 text-sm">ID: EDTW1400457854</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

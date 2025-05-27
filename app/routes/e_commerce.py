@@ -90,3 +90,9 @@ def sellers_data():
     return jsonify({
         'data': data
     })
+
+
+@e_commerce_routes.route('/e-commerce/orders-overview', methods=['GET'])
+@login_required
+def orders_overview():
+    return render_template('pages/e-commerce/order-overview.html')
