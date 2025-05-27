@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from config import Config
@@ -16,15 +16,16 @@ migrate = Migrate(app, db)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'auth_routes.login' 
-
+login_manager.login_view = 'auth_routes.login'
 
 from app.models import User
+
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+from app.middleware import *
 from app.routes import auth_routes, dashboard_routes, e_commerce_routes
 
 app.register_blueprint(auth_routes)
@@ -32,19 +33,10 @@ app.register_blueprint(dashboard_routes)
 app.register_blueprint(e_commerce_routes)
 
 
-
 from app.cli import seed_products, clear_products
 
 app.cli.add_command(seed_products)
 app.cli.add_command(clear_products)
-
-
-
-@login_manager.unauthorized_handler
-def unauthorized():
-    return redirect(url_for('auth_routes.login'))
-
-
 
 @app.route("/")
 def index():
